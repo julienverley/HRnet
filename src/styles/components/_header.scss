@@ -1,0 +1,19 @@
+.header {
+    background-color: lightgrey;
+    padding: 2.5rem 0;
+}
+
+.body-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem 0;
+
+    .body-header-link {
+        padding: 1rem 0;
+    }
+
+    .body-header-form-title {
+        padding: 2rem 0 0 0;
+    }
+}
