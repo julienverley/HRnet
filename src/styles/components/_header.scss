@@ -1,5 +1,4 @@
 .header {
-    background-color: lightgrey;
     padding: 2.5rem 0;
 }
 
@@ -7,13 +6,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2.5rem 0;
+    padding: 1rem 0;
 
     .body-header-link {
         padding: 1rem 0;
     }
 
     .body-header-form-title {
-        padding: 2rem 0 0 0;
+        padding: 3rem 0 0;
+    }
+}
+
+.logo-container {
+    position: absolute;
+    left: 1rem;
+    top: 2rem;
+
+    .logo-container-img {
+        height: 118px;
     }
 }

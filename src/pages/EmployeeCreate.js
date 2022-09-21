@@ -16,7 +16,7 @@ const EmployeeCreate = () => {
           </div>
           <h2 className="body-header-form-title">Create Employee</h2>
         </div>
-        {/* Formulaire */}
+        {/* Form */}
         <EmployeeCreateForm />
       </body>
     </>

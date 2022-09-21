@@ -25,6 +25,7 @@ const EmployeeCreateForm = () => {
       </div>
 
       {/* Address */}
+      <h3>Address</h3>
       <div className="container-address">
         {/* Street */}
         <div className="street input-container">
@@ -43,6 +44,7 @@ const EmployeeCreateForm = () => {
           <select name="state" id="state">
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
+            <option value="AK">etc.</option>
             {/* etc. A rendre dynamique */}
           </select>
         </div>
@@ -55,7 +57,7 @@ const EmployeeCreateForm = () => {
       </div>
 
       {/* Department */}
-      <div className="department input-container">
+      <div className="department input-container input-container-department">
         <label htmlFor="department">Department</label>
         <input type="text" autoComplete="off" id="department" />
       </div>
