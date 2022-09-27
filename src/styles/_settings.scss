@@ -41,15 +41,19 @@ h3 {
 
 .nav {
   text-decoration: none;
-  color: white;
   padding: 1.2rem 3rem;
-  background-color: black;
-  opacity: 60%;
   border-radius: 20px;
+  color: $color-2;
+  background-color: white;
+  border-color: $color-2;
+  font-size: larger;
+  outline-style: solid;
+  opacity: .5;
 
   &:hover {
-    opacity: 75%;
-    color: $color-1;
+    color: white;
+    background-color: $color-2;
+    opacity: 50%;
     transition: 200ms;
   }
 }

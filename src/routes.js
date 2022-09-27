@@ -1,2 +1,2 @@
-export const employeeCreate = "/";
+export const employeeForm = "/";
 export const employeeList = "/list";

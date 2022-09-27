@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 import EmployeeCreateForm from "../components/EmployeeCreateForm";
 import Header from "../components/Header";
 
-const EmployeeCreate = () => {
+const EmployeeForm = () => {
   return (
     <>
       <Header h1="HRNet" />
-      <body>
+      <div>
         <div className="body-header">
           <div className="body-header-link">
             <NavLink className="navlink" to="/list">
@@ -18,9 +18,9 @@ const EmployeeCreate = () => {
         </div>
         {/* Form */}
         <EmployeeCreateForm />
-      </body>
+      </div>
     </>
   );
 };
 
-export default EmployeeCreate;
+export default EmployeeForm;

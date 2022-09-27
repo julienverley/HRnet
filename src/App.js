@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import EmployeeCreate from "./pages/EmployeeCreate";
-import { employeeCreate, employeeList } from "./routes";
+import EmployeeForm from "./pages/EmployeeForm";
+import { employeeForm, employeeList } from "./routes";
 import EmployeeList from "./pages/EmployeeList";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path={employeeCreate} element={<EmployeeCreate />} />
+          <Route path={employeeForm} element={<EmployeeForm />} />
           <Route path={employeeList} element={<EmployeeList />} />
         </Routes>
       </BrowserRouter>
