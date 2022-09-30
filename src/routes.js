@@ -1,2 +1,2 @@
 export const employeeForm = "/";
-export const employeeList = "/list";
+export const employeesList = "/list";

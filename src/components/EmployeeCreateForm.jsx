@@ -1,131 +1,254 @@
 import React from "react";
-// import { Field, Form, Formik } from "formik";
-import { Form, Formik } from "formik";
+import { useFormik } from "formik";
 import { yupValidationSchema } from "../schemas/yupValidationSchema"; // import of validation schema
-import CustomInput from "./CustomInput";
-import CustomSelect from "./CustomSelect";
 import { states } from "../data/statesList";
 
-const onSubmit = async (values, actions) => {
-  await new Promise((resolve) => setTimeout(resolve, 500));
-  actions.resetForm();
-  console.log(values); // values of the form
-  console.log(actions); // Actions of the form
+// const onSubmit = async (values, actions) => {
+const onSubmit = (values, actions) => {
+  // await new Promise((resolve) => setTimeout(resolve, 1000));
+  // actions.resetForm();
+  console.log("Submitted form");
+  console.log(values);
+  console.log(actions);
 };
 
 const EmployeeCreateForm = () => {
+  // Formik hook
+  const {
+    values,
+    errors,
+    touched,
+    isSubmitting,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      birthDate: new Date(),
+      startDate: new Date(),
+      street: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      department: "",
+    },
+    validationSchema: yupValidationSchema,
+    onSubmit,
+  });
+
+  /// A revoir ///
+  const [initialValues, setInitialValues] = React.useState({
+    firstName: "",
+    lastName: "",
+    birthDate: "",
+    startDate: "",
+    street: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    department: "",
+  });
+
+  console.log(errors);
+  console.log(values);
+
   return (
-    <Formik
-      initialValues={{
-        firstName: "",
-        lastName: "",
-        birthDate: new Date(),
-        startDate: new Date(),
-        street: "",
-        city: "",
-        state: "AL",
-        zipCode: "",
-        department: "",
-      }}
-      validationSchema={yupValidationSchema}
-      onSubmit={onSubmit}
-    >
-      {({ isSubmitting }) => (
-        <Form className="form-container" autoComplete="off">
-          {/* First inputs */}
-          <div className="container-first-inputs">
-            {/* First name */}
-            <div className="input-container">
-              <CustomInput
-                label="First name"
-                name="firstName"
-                type="text"
-                placeholder="Enter your first name"
-              />
-            </div>
-            {/* Last name */}
-            <div className="input-container">
-              <CustomInput
-                label="Last name"
-                name="lastName"
-                type="text"
-                placeholder="Enter your last name"
-              />
-            </div>
-            {/* Birth date */}
-            <div className="input-container">
-              <CustomInput label="Birth date" name="birthDate" type="date" />
-            </div>
-            {/* Start date */}
-            <div className="input-container">
-              <CustomInput label="Start date" name="startDate" type="date" />
-            </div>
-          </div>
+    <form onSubmit={handleSubmit} className="form-container" autoComplete="off">
+      {/* First inputs */}
+      <div className="container-first-inputs">
+        <div className="firstname input-container">
+          <label htmlFor="firstName">First Name</label>
+          <input
+            value={values.firstName}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            type="text"
+            id="firstName"
+            name="firstName"
+            className={
+              errors.firstName && touched.firstName ? "input-error" : "input"
+            }
+          />
+        </div>
+        {errors.firstName && touched.firstName && (
+          <p className="error-message">{errors.firstName}</p>
+        )}
+        <div className="lastname input-container">
+          <label htmlFor="lastName">Last Name</label>
+          <input
+            value={values.lastName}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            type="text"
+            id="lastName"
+            name="lastName"
+            className={
+              errors.lastName && touched.lastName ? "input-error" : "input"
+            }
+          />
+        </div>
+        {errors.lastName && touched.lastName && (
+          <p className="error-message">{errors.lastName}</p>
+        )}
 
-          {/* Address */}
-          <h3>Address</h3>
-          <div className="container-address">
-            {/* Street */}
-            <div className="input-container">
-              <CustomInput
-                label="Street"
-                name="street"
-                type="text"
-                placeholder="Enter your street"
-              />
-            </div>
-            {/* City */}
-            <div className="input-container">
-              <CustomInput
-                label="City"
-                name="city"
-                type="text"
-                placeholder="Enter your city"
-              />
-            </div>
-            {/* State */}
-            <div className="input-container">
-              <CustomSelect label="State" name="state" id="state">
-                {states.map((state, index) => (
-                  // <option key={index} value={state.abbreviation}>
-                  <option key={index} value={state.name}>
-                    {state.name}
-                  </option>
-                ))}
-              </CustomSelect>
-            </div>
-            {/* Zip Code */}
-            <div className="input-container">
-              <CustomInput
-                label="Zip Code"
-                name="zipCode"
-                type="number"
-                placeholder="Enter your zip code"
-              />
-            </div>
-          </div>
+        {/*  */}
+        <div className="birthdate input-container">
+          <label htmlFor="birthDate">Date of Birth</label>
+          <input
+            value={values.birthDate}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            type="date"
+            id="birthDate"
+            name="birthDate"
+            className={
+              errors.birthDate && touched.birthDate ? "input-error" : "input"
+            }
+          />
+        </div>
+        {errors.birthDate && touched.birthDate && (
+          <p className="error-message">{errors.birthDate}</p>
+        )}
 
-          {/* Department */}
-          <div className="department input-container input-container-department">
-            <CustomSelect label="Department" name="department">
-              <option value="">Select your department</option>
-              <option value="Sales">Sales</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Engineering">Engineering</option>
-              <option value="Human Ressources">Human Ressources</option>
-              <option value="Legal">Legal</option>
-            </CustomSelect>
-          </div>
+        {/*  */}
+        <div className="startdate input-container">
+          <label htmlFor="startDate">Start Date</label>
+          <input
+            value={values.startDate}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            type="date"
+            id="startDate"
+            name="startDate"
+            className={
+              errors.startDate && touched.startDate ? "input-error" : "input"
+            }
+          />
+        </div>
+        {errors.startDate && touched.startDate && (
+          <p className="error-message">{errors.startDate}</p>
+        )}
+      </div>
 
-          {/* Submit */}
-          <div>
-            <button className="button" disabled={isSubmitting} type="submit">
-              Save
-            </button>
-          </div>
-        </Form>
-      )}
-    </Formik>
+      {/* Address */}
+      <h3>Address</h3>
+      <div className="container-address">
+        {/* Street */}
+        <div className="street input-container">
+          <label htmlFor="street">Street</label>
+          <input
+            value={values.street}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            type="text"
+            id="street"
+            name="street"
+            className={
+              errors.street && touched.street ? "input-error" : "input"
+            }
+          />
+        </div>
+        {errors.street && touched.street && (
+          <p className="error-message">{errors.street}</p>
+        )}
+        {/* City */}
+        <div className="city input-container">
+          <label htmlFor="city">City</label>
+          <input
+            value={values.city}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            type="text"
+            id="city"
+            name="city"
+            className={errors.city && touched.city ? "input-error" : "input"}
+          />
+        </div>
+        {errors.city && touched.city && (
+          <p className="error-message">{errors.city}</p>
+        )}
+
+        {/* State - select (pas input) */}
+        <div className="state input-container">
+          <label htmlFor="state">State</label>
+          <select
+            value={values.state}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            name="state"
+            id="state"
+            className={errors.state && touched.state ? "input-error" : "select"}
+          >
+            <option value="">Select your state</option>
+
+            {states.map((state, index) => (
+              <option key={index} value={state.name}>
+                {state.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        {errors.state && touched.state && (
+          <p className="error-message">{errors.state}</p>
+        )}
+
+        {/* Zip Code */}
+        <div className="zipcode input-container">
+          <label htmlFor="zipCode">Zip Code</label>
+          <input
+            value={values.zipCode}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            type="text"
+            id="zipCode"
+            name="zipCode"
+            className={
+              errors.zipCode && touched.zipCode ? "input-error" : "input"
+            }
+          />
+        </div>
+        {errors.zipCode && touched.zipCode && (
+          <p className="error-message">{errors.zipCode}</p>
+        )}
+      </div>
+
+      {/* Department */}
+      <div>
+        <div className="department input-container input-container-department">
+          <label htmlFor="department">Department</label>
+          <select
+            value={values.department}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            type="text"
+            id="department"
+            name="department"
+            className={
+              errors.department && touched.department ? "input-error" : "input"
+            }
+          >
+            <option value="">Select your department</option>
+            <option value="Sales">Sales</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Human Ressources">Human Ressources</option>
+            <option value="Legal">Legal</option>
+          </select>
+        </div>
+        {errors.department && touched.department && (
+          <p className="error-message">{errors.department}</p>
+        )}
+      </div>
+
+      {/* Submit */}
+      <div>
+        <button className="button" disabled={isSubmitting} type="submit">
+          Save
+        </button>
+      </div>
+    </form>
   );
 };
 

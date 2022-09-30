@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 import BasicTable from "../components/BasicTable";
 import Header from "../components/Header";
 
-const EmployeeList = () => {
+const EmployeesList = () => {
   return (
     <>
       <Header h1="Current Employees" />
-      <body>
+      <div className="body">
         <div className="body-header">
           <div className="body-header-link">
             <NavLink className="navlink" to="/">
@@ -18,9 +18,9 @@ const EmployeeList = () => {
         {/* Table */}
         <br />
         <BasicTable />
-      </body>
+      </div>
     </>
   );
 };
 
-export default EmployeeList;
+export default EmployeesList;
