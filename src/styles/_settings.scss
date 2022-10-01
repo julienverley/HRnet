@@ -45,7 +45,6 @@ h3 {
   border-radius: 20px;
   color: $color-2;
   background-color: white;
-  border-color: $color-2;
   font-size: larger;
   outline-style: solid;
   opacity: .5;
@@ -53,8 +52,14 @@ h3 {
   &:hover {
     color: white;
     background-color: $color-2;
+    outline-color: white;
     opacity: .5;
     transition: 200ms;
   }
 }
 
+.index { 
+  color: $color-2;
+  font-size: larger;
+  opacity: .6;
+}

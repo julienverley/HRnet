@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 // import BasicTable from "../components/BasicTable";
-import SortingTable from "../components/SortingTable";
+// import SortingTable from "../components/SortingTable";
+import PaginationTable from "../components/PaginationTable";
 import Header from "../components/Header";
 import { employeesListContext } from "../context/ContextProvider"; ///
 import AtomNavButton from "../components/atoms/AtomNavButton";
@@ -22,7 +23,7 @@ const EmployeesList = () => {
         </div>
         {/* Table */}
         <br />
-        <SortingTable data={context.employees} />
+        <PaginationTable data={context.employees} />
       </div>
     </>
   );
