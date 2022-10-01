@@ -25,7 +25,7 @@ export const yupValidationSchema = yup.object().shape({
     .required("City is required"),
   state: yup.string().required("State is required"),
   zipCode: yup
-    .number()
+    .string()
     .min(2, "Correct zip code is required")
     .max(12, "Correct zip code is required")
     .required("Zip code is required"),

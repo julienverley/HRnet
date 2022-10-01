@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import AtomNavButton from "../components/atoms/AtomNavButton";
 import EmployeeCreateForm from "../components/EmployeeCreateForm";
 import Header from "../components/Header";
 
@@ -11,7 +12,7 @@ const EmployeeForm = () => {
         <div className="body-header">
           <div className="body-header-link">
             <NavLink className="navlink" to="/list">
-              <div className="nav">View Current Employees</div>
+              <AtomNavButton content="View Current Employees" />
             </NavLink>
           </div>
           <h2 className="body-header-form-title">Create Employee</h2>

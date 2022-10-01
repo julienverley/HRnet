@@ -1,35 +1,44 @@
+// Function used to format the date field (npm install date-fns --save)
+import { format } from "date-fns";
+
 export const COLUMNS = [
   {
     Header: "First Name",
-    accessor: "first_name",
+    accessor: "firstName",
   },
   {
     Header: "Last Name",
-    accessor: "last_name",
+    accessor: "lastName",
   },
   {
     Header: "Date of Birth",
-    accessor: "date_of_birth",
+    accessor: "birthDate",
+    Cell: ({ value }) => {
+      return format(new Date(value), "dd/MM/yyyy");
+    },
   },
   {
     Header: "Start Date",
-    accessor: "start_date",
+    accessor: "startDate",
+    Cell: ({ value }) => {
+      return format(new Date(value), "dd/MM/yyyy");
+    },
   },
   {
     Header: "Street Address",
-    accessor: "address_street",
+    accessor: "street",
   },
   {
     Header: "City Address",
-    accessor: "address_city",
+    accessor: "city",
   },
   {
     Header: "State Address",
-    accessor: "address_state",
+    accessor: "state",
   },
   {
     Header: "Zipcode Address",
-    accessor: "address_zipcode",
+    accessor: "zipCode",
   },
   {
     Header: "Department",

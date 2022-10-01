@@ -1,19 +1,27 @@
-// Unused
-
 import React, { useMemo } from "react";
-import { useTable } from "react-table";
+import { useTable, useSortBy } from "react-table";
 // import MOCK_DATA from "../data/MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 
 //  data is context.employees cf. EmployeesList.js
-const BasicTable = ({ data }) => {
+const SortingTable = ({ data }) => {
   const columns = useMemo(() => COLUMNS, []);
   // const data = useMemo(() => MOCK_DATA, []);
 
-  const tableInstance = useTable({
-    columns,
-    data,
-  });
+  //   const tableInstance = useTable({
+  //     columns,
+  //     data,
+  //   });
+
+  //   const {
+  //     getTableProps,
+  //     getTableBodyProps,
+  //     // Group of headers, map of each header (column) (cf. Header in columns.js [])
+  //     headerGroups,
+  //     // Rows from the table instance (for each row, map of each cell (cf. accessor in columns.js []))
+  //     rows,
+  //     prepareRow,
+  //   } = tableInstance;
 
   const {
     getTableProps,
@@ -23,7 +31,13 @@ const BasicTable = ({ data }) => {
     // Rows from the table instance (for each row, map of each cell (cf. accessor in columns.js []))
     rows,
     prepareRow,
-  } = tableInstance;
+  } = useTable(
+    {
+      columns,
+      data,
+    },
+    useSortBy
+  );
 
   return (
     <table {...getTableProps()}>
@@ -31,7 +45,12 @@ const BasicTable = ({ data }) => {
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                {column.render("Header")}
+                <span>
+                  {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
+                </span>
+              </th>
             ))}
           </tr>
         ))}
@@ -52,7 +71,7 @@ const BasicTable = ({ data }) => {
   );
 };
 
-export default BasicTable;
+export default SortingTable;
 
 // Tableau qui gère la pagination ? https://react-table-v7.tanstack.com/docs/api/usePagination
 // Tableau qui gère le nombre de lignes affichées ?
