@@ -1,10 +1,18 @@
 import React, { useMemo } from "react";
-import { useTable, useSortBy, usePagination } from "react-table";
+import {
+  useTable,
+  useSortBy,
+  usePagination,
+  useGlobalFilter,
+} from "react-table";
+// import { number } from "yup";
 // import MOCK_DATA from "../data/MOCK_DATA.json";
 import { COLUMNS } from "./columns";
+import TableGlobalFilter from "./TableGlobalFilter";
+import CustomSelect from "./CustomSelect";
 
 //  data is context.employees cf. EmployeesList.js
-const PaginationTable = ({ data }) => {
+const Table = ({ data }) => {
   const columns = useMemo(() => COLUMNS, []);
   // const data = useMemo(() => MOCK_DATA, []);
 
@@ -23,20 +31,47 @@ const PaginationTable = ({ data }) => {
     canNextPage,
     canPreviousPage,
     pageOptions,
+    // pageSize is used for pagination (number of rows per page)
+    setPageSize,
     state,
+    // Global Filter
+    setGlobalFilter,
   } = useTable(
     {
       columns,
       data,
     },
+    useGlobalFilter,
     useSortBy,
     usePagination
   );
 
-  const { pageIndex } = state;
+  // const { pageIndex, pageSize, globalFilter } = state;
+  const { pageIndex, globalFilter } = state;
+
+  const pagesOptions = [
+    { value: 5, label: "5" },
+    { value: 10, label: "10" },
+    { value: 25, label: "25" },
+    { value: 50, label: "50" },
+  ];
 
   return (
     <>
+      <div className="table-header">
+        {/* Table search */}
+        <TableGlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+        {/* Table show a number of employees */}
+        <div className="input-container">
+          <CustomSelect
+            className="table-show "
+            value={pagesOptions}
+            onChange={(value) => setPageSize(Number(value.value))}
+            options={pagesOptions}
+          ></CustomSelect>
+        </div>
+      </div>
+      {/* Table */}
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -95,4 +130,4 @@ const PaginationTable = ({ data }) => {
   );
 };
 
-export default PaginationTable;
+export default Table;

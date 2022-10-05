@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 // import BasicTable from "../components/BasicTable";
 // import SortingTable from "../components/SortingTable";
-import PaginationTable from "../components/PaginationTable";
+import Table from "../components/Table";
 import Header from "../components/Header";
 import { employeesListContext } from "../context/ContextProvider"; ///
 import AtomNavButton from "../components/atoms/AtomNavButton";
@@ -17,13 +17,13 @@ const EmployeesList = () => {
         <div className="body-header">
           <div className="body-header-link">
             <NavLink className="navlink" to="/">
-              <AtomNavButton content="Home" />
+              <AtomNavButton content="Create employee" />
             </NavLink>
           </div>
         </div>
         {/* Table */}
         <br />
-        <PaginationTable data={context.employees} />
+        <Table data={context.employees} />
       </div>
     </>
   );

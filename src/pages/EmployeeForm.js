@@ -12,7 +12,7 @@ const EmployeeForm = () => {
         <div className="body-header">
           <div className="body-header-link">
             <NavLink className="navlink" to="/list">
-              <AtomNavButton content="View Current Employees" />
+              <AtomNavButton content="View current employees" />
             </NavLink>
           </div>
           <h2 className="body-header-form-title">Create Employee</h2>

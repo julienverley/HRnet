@@ -18,8 +18,21 @@
     display: flex;
     flex-direction: column;
     padding: 0.5rem 0;
+}
 
-    select, input, .select, .input {
+
+.input-container-department {
+    padding: 0.5rem 0;
+    width: 15rem;
+
+}
+
+.input-error {
+    border: 1px solid;
+    border-color: #CD5C5C;
+}
+
+    select, input, .input {
         outline: none; // 
         border: 1px solid;
         border-color: $color-1;
@@ -30,20 +43,11 @@
         padding: 0.5rem;
     }
 
-    .input-error {
-        border: 1px solid;
-        border-color: #CD5C5C;
-    }
-}
-
 .error-message {
     color: #CD5C5C;
     font-size: 0.75rem;
 }
 
-.input-container-department {
-    padding: 0.5rem 0;
-}
 
 .centering-container {
     display: flex;

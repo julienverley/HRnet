@@ -1,4 +1,18 @@
 import * as yup from "yup"; // cf. validation schema
+// import { states } from "../data/statesList";
+
+// const stateOptions = states.map((state) => ({
+//   value: state.name,
+//   label: state.name,
+// }));
+
+// const departmentOptions = [
+//   { value: "sales", label: "Sales" },
+//   { value: "marketing", label: "Marketing" },
+//   { value: "engineering", label: "Engineering" },
+//   { value: "human_resources", label: "Human Resources" },
+//   { value: "legal", label: "Legal" },
+// ];
 
 export const yupValidationSchema = yup.object().shape({
   firstName: yup
@@ -23,15 +37,21 @@ export const yupValidationSchema = yup.object().shape({
     .min(2, "Too short city name")
     .max(40, "Too long")
     .required("City is required"),
-  state: yup.string().required("State is required"),
+  state: yup ///
+    .string()
+    .min(2, "Select a department")
+    .max(40, "Too long")
+    .required("State is required"),
+  // .oneOf(stateOptions),
   zipCode: yup
     .string()
     .min(2, "Correct zip code is required")
     .max(12, "Correct zip code is required")
     .required("Zip code is required"),
-  department: yup
+  department: yup ///
     .string()
     .min(2, "Select a department")
     .max(40, "Too long")
     .required("Department is required"),
+  // .oneOf(departmentOptions),
 });

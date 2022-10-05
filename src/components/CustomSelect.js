@@ -1,23 +1,19 @@
 import React from "react";
-import { useField } from "formik";
+import Select from "react-select";
 
-const CustomSelect = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  //   console.log("field", field);
-  //   console.log("meta", meta);
-
+const CustomSelect = ({ onChange, options, values, className }) => {
+  const defaultValue = (options, values) => {
+    return options ? options.find((option) => option.value === values) : "";
+  };
   return (
-    <>
-      <label>{label}</label>
-      <select
-        {...field}
-        {...props}
-        className={meta.touched && meta.error ? "input-error" : "select"}
+    <div className={className}>
+      <Select
+        value={defaultValue(options, values)}
+        onChange={(value) => onChange(value)}
+        options={options}
       />
-      {meta.touched && meta.error && (
-        <p className="error-message">{meta.error}</p>
-      )}
-    </>
+    </div>
   );
 };
+
 export default CustomSelect;
