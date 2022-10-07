@@ -9,7 +9,8 @@ import AtomNavButton from "../components/atoms/AtomNavButton";
 
 const EmployeesList = () => {
   const context = React.useContext(employeesListContext); ///
-  console.log(context.employees); //
+  // console.log(context); //
+  // console.log(context.employees); //
   return (
     <>
       <Header h1="Current Employees" />
@@ -25,6 +26,15 @@ const EmployeesList = () => {
         <br />
         <Table data={context.employees} />
       </div>
+      {new Date().toLocaleDateString("fr-FR", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+      })}
     </>
   );
 };

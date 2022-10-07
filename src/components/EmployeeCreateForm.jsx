@@ -1,13 +1,15 @@
-import React from "react";
-import { useFormik } from "formik";
+import React, { useState } from "react";
+import { useFormik, useField, useFormikContext } from "formik";
 import { yupValidationSchema } from "../schemas/yupValidationSchema"; // import of validation schema
 import { employeesListContext } from "../context/ContextProvider";
 import CustomSelect from "./CustomSelect";
 import { states } from "../data/statesList";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const EmployeeCreateForm = () => {
   const context = React.useContext(employeesListContext); ///
-  console.log(context);
+  // console.log(context);
 
   // react-select:
   const departmentOptions = [
@@ -18,11 +20,15 @@ const EmployeeCreateForm = () => {
     { value: "legal", label: "Legal" },
   ];
 
+  // react-select:
   const stateOptions = states.map((state) => ({
     value: state.name,
     label: state.name,
   }));
-  console.log(stateOptions);
+  // console.log(stateOptions);
+
+  // react-datepicker:
+  // const [selectedDate, setSelectedDate] = useState(null);
 
   const formik = useFormik({
     initialValues: {
@@ -91,11 +97,25 @@ const EmployeeCreateForm = () => {
           {formik.errors.lastName && formik.touched.lastName && (
             <p className="error-message">{formik.errors.lastName}</p>
           )}
-
+          {/*  */}
+          {/* Date birth */}
           {/*  */}
           <div className="birthdate input-container">
-            <label htmlFor="birthDate">Date of Birth</label>
-            <input
+            <label htmlFor="birthDate">Birth date</label>
+            <DatePicker
+              value={formik.values.birthDate}
+              onChange={(newDate) => formik.setFieldValue("birthDate", newDate)}
+              onBlur={formik.handleBlur} /// ? pas sûr de ce qu'il faut mettre ici
+              dateFormat="yyyy/MM/dd"
+              id="birthDate"
+              name="birthDate"
+              className={
+                formik.errors.birthDate && formik.touched.birthDate
+                  ? "input-error"
+                  : "input"
+              } /// ? ne fonctionne pas
+            />
+            {/* <input
               value={formik.values.birthDate}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -107,16 +127,31 @@ const EmployeeCreateForm = () => {
                   ? "input-error"
                   : "input"
               }
-            />
+            /> */}
           </div>
           {formik.errors.birthDate && formik.touched.birthDate && (
             <p className="error-message">{formik.errors.birthDate}</p>
           )}
-
+          {/* /// ? ne fonctionne pas */}
+          {/*  */}
+          {/* Date start */}
           {/*  */}
           <div className="startdate input-container">
             <label htmlFor="startDate">Start Date</label>
-            <input
+            <DatePicker
+              value={formik.values.startDate}
+              onChange={(newDate) => formik.setFieldValue("startDate", newDate)}
+              onBlur={formik.handleBlur} /// ? pas sûr de ce qu'il faut mettre ici
+              dateFormat="yyyy/MM/dd"
+              id="startDate"
+              name="startDate"
+              className={
+                formik.errors.startDate && formik.touched.startDate
+                  ? "input-error"
+                  : "input"
+              } /// ? ne fonctionne pas
+            />
+            {/* <input
               value={formik.values.startDate}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -128,12 +163,13 @@ const EmployeeCreateForm = () => {
                   ? "input-error"
                   : "input"
               }
-            />
+            /> */}
           </div>
           {formik.errors.startDate && formik.touched.startDate && (
             <p className="error-message">{formik.errors.startDate}</p>
           )}
         </div>
+        {/* /// ? ne fonctionne pas */}
 
         {/* Address */}
         <h3>Address</h3>
