@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import EmployeeForm from "./pages/EmployeeForm";
-import { employeeForm, employeesList } from "./routes";
-import EmployeesList from "./pages/EmployeesList";
-import Error from "./pages/Error";
+import { pageEmployeeForm, pageEmployeesList } from "./routes";
+import PageEmployeeForm from "./pages/PageEmployeeForm";
+import PageEmployeesList from "./pages/PageEmployeesList";
+import PageError from "./pages/PageError";
 import ContextProvider from "./context/ContextProvider";
 
 function App() {
@@ -11,9 +11,9 @@ function App() {
       <ContextProvider>
         <BrowserRouter>
           <Routes>
-            <Route path={employeeForm} element={<EmployeeForm />} />
-            <Route path={employeesList} element={<EmployeesList />} />
-            <Route path="*" element={<Error />} />
+            <Route path={pageEmployeeForm} element={<PageEmployeeForm />} />
+            <Route path={pageEmployeesList} element={<PageEmployeesList />} />
+            <Route path="*" element={<PageError />} />
           </Routes>
         </BrowserRouter>
       </ContextProvider>

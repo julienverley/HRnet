@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { useFormik, useField, useFormikContext } from "formik";
+import { useFormik } from "formik";
 import { yupValidationSchema } from "../schemas/yupValidationSchema"; // import of validation schema
 import { employeesListContext } from "../context/ContextProvider";
 import CustomSelect from "./CustomSelect";
 import { states } from "../data/statesList";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Modal from "./Modal";
 
 const EmployeeCreateForm = () => {
-  const context = React.useContext(employeesListContext); ///
+  const context = React.useContext(employeesListContext);
   // console.log(context);
 
   // react-select:
@@ -22,13 +23,10 @@ const EmployeeCreateForm = () => {
 
   // react-select:
   const stateOptions = states.map((state) => ({
-    value: state.name,
+    value: state.abbreviation,
     label: state.name,
   }));
   // console.log(stateOptions);
-
-  // react-datepicker:
-  // const [selectedDate, setSelectedDate] = useState(null);
 
   const formik = useFormik({
     initialValues: {
@@ -38,17 +36,28 @@ const EmployeeCreateForm = () => {
       startDate: new Date(),
       street: "",
       city: "",
+      // state: "",
       state: "AL",
       zipCode: "",
       department: "sales",
+      // department: "",
     },
     validationSchema: yupValidationSchema,
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: (values, { resetForm, setSubmitting }) => {
+      // Add new employee to the list:
       context.addEmployee(values);
+      openModal();
       resetForm({ values: "" });
     },
   });
-  console.log(formik.values);
+  // console.log(formik.values);
+
+  // Modal
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal((prev) => !prev);
+  };
 
   return (
     <>
@@ -97,80 +106,34 @@ const EmployeeCreateForm = () => {
           {formik.errors.lastName && formik.touched.lastName && (
             <p className="error-message">{formik.errors.lastName}</p>
           )}
-          {/*  */}
           {/* Date birth */}
-          {/*  */}
           <div className="birthdate input-container">
             <label htmlFor="birthDate">Birth date</label>
             <DatePicker
+              selected={formik.values.birthDate} //
               value={formik.values.birthDate}
               onChange={(newDate) => formik.setFieldValue("birthDate", newDate)}
-              onBlur={formik.handleBlur} /// ? pas sûr de ce qu'il faut mettre ici
+              onBlur={formik.handleBlur}
               dateFormat="yyyy/MM/dd"
               id="birthDate"
               name="birthDate"
-              className={
-                formik.errors.birthDate && formik.touched.birthDate
-                  ? "input-error"
-                  : "input"
-              } /// ? ne fonctionne pas
             />
-            {/* <input
-              value={formik.values.birthDate}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              type="date"
-              id="birthDate"
-              name="birthDate"
-              className={
-                formik.errors.birthDate && formik.touched.birthDate
-                  ? "input-error"
-                  : "input"
-              }
-            /> */}
           </div>
-          {formik.errors.birthDate && formik.touched.birthDate && (
-            <p className="error-message">{formik.errors.birthDate}</p>
-          )}
-          {/* /// ? ne fonctionne pas */}
-          {/*  */}
           {/* Date start */}
-          {/*  */}
           <div className="startdate input-container">
             <label htmlFor="startDate">Start Date</label>
             <DatePicker
+              selected={formik.values.startDate}
               value={formik.values.startDate}
               onChange={(newDate) => formik.setFieldValue("startDate", newDate)}
-              onBlur={formik.handleBlur} /// ? pas sûr de ce qu'il faut mettre ici
+              onBlur={formik.handleBlur}
               dateFormat="yyyy/MM/dd"
               id="startDate"
               name="startDate"
-              className={
-                formik.errors.startDate && formik.touched.startDate
-                  ? "input-error"
-                  : "input"
-              } /// ? ne fonctionne pas
             />
-            {/* <input
-              value={formik.values.startDate}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              type="date"
-              id="startDate"
-              name="startDate"
-              className={
-                formik.errors.startDate && formik.touched.startDate
-                  ? "input-error"
-                  : "input"
-              }
-            /> */}
           </div>
-          {formik.errors.startDate && formik.touched.startDate && (
-            <p className="error-message">{formik.errors.startDate}</p>
-          )}
         </div>
-        {/* /// ? ne fonctionne pas */}
-
+        {/*  */}
         {/* Address */}
         <h3>Address</h3>
         <div className="container-address">
@@ -214,32 +177,20 @@ const EmployeeCreateForm = () => {
           {formik.errors.city && formik.touched.city && (
             <p className="error-message">{formik.errors.city}</p>
           )}
-          {/*  */}
           {/* State select */}
-          {/*  */}
           <div className="state input-container">
             <label htmlFor="state">States</label>
             <CustomSelect
               options={stateOptions}
+              values={formik.values.state}
               value={formik.values.state}
               onChange={(value) => formik.setFieldValue("state", value.value)}
               onBlur={formik.handleBlur}
               type="text"
               id="state"
               name="state"
-              //   className="input"
-              className={
-                formik.errors.state && formik.touched.state
-                  ? "input-error"
-                  : //   : "input"
-                    ""
-              }
             ></CustomSelect>
           </div>
-          {formik.errors.state && formik.touched.state && (
-            <p className="error-message">{formik.errors.state}</p>
-          )}
-          {/* /// */}
           {/* Zip Code */}
           <div className="zipcode input-container">
             <label htmlFor="zipCode">Zip Code</label>
@@ -263,12 +214,12 @@ const EmployeeCreateForm = () => {
         </div>
         {/*  */}
         {/* Department */}
-        {/*  */}
         <div>
-          <div className="department input-container input-container-department">
+          <div className="department input-container">
             <label htmlFor="department">Department</label>
             <CustomSelect
               options={departmentOptions}
+              values={formik.values.department}
               value={formik.values.department}
               onChange={(value) =>
                 formik.setFieldValue("department", value.value)
@@ -277,19 +228,9 @@ const EmployeeCreateForm = () => {
               type="text"
               id="department"
               name="department"
-              className={
-                formik.errors.department && formik.touched.department
-                  ? "input-error"
-                  : // : "input"
-                    ""
-              }
             />
           </div>
-          {formik.errors.department && formik.touched.department && (
-            <p className="error-message">{formik.errors.department}</p>
-          )}
         </div>
-        {/* /// */}
         {/* Submit */}
         <div>
           <button
@@ -301,6 +242,19 @@ const EmployeeCreateForm = () => {
           </button>
         </div>
       </form>
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        //your custom parameters
+        backgroundColor="#8D6A9F"
+        // colorModal="rgba(215, 246, 207, 1)"
+        iconModal="success"
+        // borderModal="40px"
+        content="Employee added successfully"
+        contentcolor="white"
+        // shadowModal="0 5px 16px rgba(18, 39, 3, 1)"
+        fontSizeModal="1.8rem"
+      />
     </>
   );
 };

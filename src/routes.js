@@ -1,2 +1,2 @@
-export const employeeForm = "/";
-export const employeesList = "/list";
+export const pageEmployeeForm = "/";
+export const pageEmployeesList = "/list";

@@ -63,3 +63,8 @@ h3 {
   font-size: larger;
   opacity: .6;
 }
+
+// React-select
+// We use the className and classNamePrefix to style the react-select component
+// We presently use the style object https://react-select.com/styles#using-classnames
+// Cf. CustomSelect.hs customStyles 

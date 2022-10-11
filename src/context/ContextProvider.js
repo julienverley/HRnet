@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 
-// Context object:
+// Context object containing employees and addEmployee:
 export const employeesListContext = React.createContext({
+  /////////////////////////
   employees: [],
+  // employeesList: [],
+  /////////////////////////
 });
 
 // children = prop passed to the ContextProvider children components
 const ContextProvider = ({ children }) => {
-  // employee list and setEmployees = function updating
   const [employees, setEmployees] = useState([
     {
       firstName: "Cati",
@@ -302,7 +304,6 @@ const ContextProvider = ({ children }) => {
     setEmployees([...employees, newEmployee]);
   };
 
-  ///
   const value = { employees, addEmployee };
 
   return (

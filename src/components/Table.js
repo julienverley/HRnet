@@ -63,8 +63,8 @@ const Table = ({ data }) => {
         <TableGlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         {/* Table show a number of employees */}
         <div className="input-container">
-          <CustomSelect
-            className="table-show "
+          Show number of employees
+          <CustomSelect /// Gérer la defaultValue, le placeholder
             value={pagesOptions}
             onChange={(value) => setPageSize(Number(value.value))}
             options={pagesOptions}
