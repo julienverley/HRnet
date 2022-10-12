@@ -1,10 +1,18 @@
 import React from "react";
 import Select from "react-select";
 
-const CustomSelect = ({ onChange, onBlur, options, values, className }) => {
-  const defaultValue = (options, values) => {
-    return options ? options.find((option) => option.value === values) : "";
-  };
+const CustomSelect = ({
+  onChange,
+  onBlur,
+  options,
+  defaultValue,
+  // values,
+  className,
+}) => {
+  // const defaultValue = (options, values) => {
+  //   return options ? options.find((option) => option.value === values) : "";
+  //   // return options ? options.find((option) => option.value === values) : 50;
+  // };
 
   const customStyles = {
     indicatorsContainer: (provided, state) => ({
@@ -22,11 +30,15 @@ const CustomSelect = ({ onChange, onBlur, options, values, className }) => {
     input: (provided, state) => ({
       ...provided,
       padding: "0 0 0 1rem",
+      cursor: "pointer",
     }),
     option: (provided, state) => ({
       ...provided,
       color: state.isSelected ? "white" : "black",
+      backgroundColor: state.isSelected ? "#6E850F" : "white",
+      opacity: state.isSelected ? 0.6 : 1,
       padding: 20,
+      cursor: "pointer",
     }),
     control: () => ({
       // none of react-select's styles are passed to <Control />
@@ -42,8 +54,8 @@ const CustomSelect = ({ onChange, onBlur, options, values, className }) => {
   return (
     <div className={className}>
       <Select
-        defaultValue={defaultValue(options, values)}
-        value={defaultValue(options, values)}
+        defaultValue={defaultValue}
+        // value={defaultValue(options, values)}
         onChange={(value) => onChange(value)}
         options={options}
         onBlur={onBlur}

@@ -21,8 +21,11 @@
     position: absolute;
     left: 1rem;
     top: 2rem;
+    z-index: 1;
+    cursor: pointer;
 
     .logo-container-img {
         height: 118px;
+        // height: 80px; //// 
     }
 }

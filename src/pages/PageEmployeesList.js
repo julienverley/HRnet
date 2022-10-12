@@ -6,6 +6,7 @@ import Table from "../components/Table";
 import Header from "../components/Header";
 import { employeesListContext } from "../context/ContextProvider";
 import AtomNavButton from "../components/atoms/AtomNavButton";
+import LastConnexionMessage from "../components/LastConnexionMessage";
 
 const EmployeesList = () => {
   const context = React.useContext(employeesListContext);
@@ -26,19 +27,7 @@ const EmployeesList = () => {
         <Table data={context.employees} />
       </div>
       {/*  */}
-      {/* Date management */}
-      <div style={{ fontSize: "3rem", opacity: ".2", textAlign: "center" }}>
-        Vous vous êtes connecté{" "}
-        {new Date().toLocaleDateString("fr-FR", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-          second: "numeric",
-        })}
-      </div>
+      <LastConnexionMessage />
       {/*  */}
     </>
   );

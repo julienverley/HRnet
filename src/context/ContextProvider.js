@@ -2,10 +2,7 @@ import React, { useState } from "react";
 
 // Context object containing employees and addEmployee:
 export const employeesListContext = React.createContext({
-  /////////////////////////
-  employees: [],
-  // employeesList: [],
-  /////////////////////////
+  employees: [], /// Pourquoi ce nom ?
 });
 
 // children = prop passed to the ContextProvider children components

@@ -7,12 +7,13 @@ import { states } from "../data/statesList";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Modal from "./Modal";
+import LastConnexionMessage from "./LastConnexionMessage";
 
 const EmployeeCreateForm = () => {
   const context = React.useContext(employeesListContext);
   // console.log(context);
 
-  // react-select:
+  // react-select departments list:
   const departmentOptions = [
     { value: "sales", label: "Sales" },
     { value: "marketing", label: "Marketing" },
@@ -20,8 +21,7 @@ const EmployeeCreateForm = () => {
     { value: "human_resources", label: "Human Resources" },
     { value: "legal", label: "Legal" },
   ];
-
-  // react-select:
+  // react-select states list:
   const stateOptions = states.map((state) => ({
     value: state.abbreviation,
     label: state.name,
@@ -36,11 +36,9 @@ const EmployeeCreateForm = () => {
       startDate: new Date(),
       street: "",
       city: "",
-      // state: "",
       state: "AL",
       zipCode: "",
       department: "sales",
-      // department: "",
     },
     validationSchema: yupValidationSchema,
     onSubmit: (values, { resetForm, setSubmitting }) => {
@@ -54,9 +52,8 @@ const EmployeeCreateForm = () => {
 
   // Modal
   const [showModal, setShowModal] = useState(false);
-
   const openModal = () => {
-    setShowModal((prev) => !prev);
+    setShowModal((prev) => !prev); /// toggle modal
   };
 
   return (
@@ -184,6 +181,7 @@ const EmployeeCreateForm = () => {
               options={stateOptions}
               values={formik.values.state}
               value={formik.values.state}
+              defaultValue={stateOptions[0]}
               onChange={(value) => formik.setFieldValue("state", value.value)}
               onBlur={formik.handleBlur}
               type="text"
@@ -221,6 +219,7 @@ const EmployeeCreateForm = () => {
               options={departmentOptions}
               values={formik.values.department}
               value={formik.values.department}
+              defaultValue={departmentOptions[0]}
               onChange={(value) =>
                 formik.setFieldValue("department", value.value)
               }
@@ -245,16 +244,16 @@ const EmployeeCreateForm = () => {
       <Modal
         showModal={showModal}
         setShowModal={setShowModal}
-        //your custom parameters
-        backgroundColor="#8D6A9F"
-        // colorModal="rgba(215, 246, 207, 1)"
-        iconModal="success"
-        // borderModal="40px"
+        //
+        //Change your custom parameters below:
+        //
+        backgroundColor="#544343"
+        borderModal="0px"
         content="Employee added successfully"
         contentcolor="white"
-        // shadowModal="0 5px 16px rgba(18, 39, 3, 1)"
         fontSizeModal="1.8rem"
       />
+      <LastConnexionMessage />
     </>
   );
 };

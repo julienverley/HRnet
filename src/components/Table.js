@@ -62,12 +62,13 @@ const Table = ({ data }) => {
         {/* Table search */}
         <TableGlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         {/* Table show a number of employees */}
-        <div className="input-container">
+        <div className="input-container table-show">
           Show number of employees
           <CustomSelect /// Gérer la defaultValue, le placeholder
             value={pagesOptions}
             onChange={(value) => setPageSize(Number(value.value))}
             options={pagesOptions}
+            defaultValue={pagesOptions[1]} ///
           ></CustomSelect>
         </div>
       </div>
@@ -115,7 +116,6 @@ const Table = ({ data }) => {
           Previous Page
         </button>
         <span className="index">
-          {/* Page {pageIndex + 1} of {pageOptions.length}{" "} */}
           {pageIndex + 1} of {pageOptions.length}{" "}
         </span>
         <button
