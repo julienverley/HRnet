@@ -27,7 +27,7 @@ const Modal = ({
             zIndex: "2",
             minWidth: "340px",
             width: "99vw",
-            height: "98vh",
+            height: "98.5vh",
             borderRadius: borderModal,
             textAlign: "center",
             display: "flex",

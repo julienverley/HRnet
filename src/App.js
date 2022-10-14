@@ -3,12 +3,19 @@ import { pageEmployeeForm, pageEmployeesList } from "./routes";
 import PageEmployeeForm from "./pages/PageEmployeeForm";
 import PageEmployeesList from "./pages/PageEmployeesList";
 import PageError from "./pages/PageError";
-import ContextProvider from "./context/ContextProvider";
+
+// useContext
+// import ContextProvider from "./context/ContextProvider";
+
+// Redux toolkit
+import { Provider } from "react-redux";
+import store from "./app/store";
 
 function App() {
   return (
     <>
-      <ContextProvider>
+      {/* <ContextProvider> */}
+      <Provider store={store}>
         <BrowserRouter>
           <Routes>
             <Route path={pageEmployeeForm} element={<PageEmployeeForm />} />
@@ -16,7 +23,8 @@ function App() {
             <Route path="*" element={<PageError />} />
           </Routes>
         </BrowserRouter>
-      </ContextProvider>
+      </Provider>
+      {/* </ContextProvider> */}
     </>
   );
 }

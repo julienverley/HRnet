@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import { yupValidationSchema } from "../schemas/yupValidationSchema"; // import of validation schema
-import { employeesListContext } from "../context/ContextProvider";
 import CustomSelect from "./CustomSelect";
 import { states } from "../data/statesList";
 import DatePicker from "react-datepicker";
@@ -9,9 +8,20 @@ import "react-datepicker/dist/react-datepicker.css";
 import Modal from "./Modal";
 import LastConnexionMessage from "./LastConnexionMessage";
 
+// useContext
+// import { employeesListContext } from "../context/ContextProvider";
+
+// Redux
+import { useDispatch } from "react-redux";
+import { addEmployee } from "../feature/employeesSlice";
+
 const EmployeeCreateForm = () => {
-  const context = React.useContext(employeesListContext);
+  // useContext
+  // const context = React.useContext(employeesListContext);
   // console.log(context);
+
+  // Redux
+  const dispatch = useDispatch();
 
   // react-select departments list:
   const departmentOptions = [
@@ -42,8 +52,13 @@ const EmployeeCreateForm = () => {
     },
     validationSchema: yupValidationSchema,
     onSubmit: (values, { resetForm, setSubmitting }) => {
+      console.log(values);
       // Add new employee to the list:
-      context.addEmployee(values);
+      // useContext
+      // context.addEmployee(values);
+      // Redux
+      // dispatch({ type: "ADD_EMPLOYEE", payload: values });
+      dispatch(addEmployee(values));
       openModal();
       resetForm({ values: "" });
     },
