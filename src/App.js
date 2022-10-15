@@ -15,6 +15,7 @@ function App() {
   return (
     <>
       {/* <ContextProvider> */}
+      {/* Provider from Redux toolkit */}
       <Provider store={store}>
         <BrowserRouter>
           <Routes>

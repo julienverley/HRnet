@@ -56,16 +56,20 @@ const EmployeeCreateForm = () => {
       // Add new employee to the list:
       // useContext
       // context.addEmployee(values);
+
       // Redux
-      // dispatch({ type: "ADD_EMPLOYEE", payload: values });
+      // Transform dates from objects to strings
+      const birthDate = values.birthDate.toISOString();
+      const startDate = values.startDate.toISOString();
+      values = { ...values, birthDate, startDate };
+
       dispatch(addEmployee(values));
       openModal();
       resetForm({ values: "" });
     },
   });
-  // console.log(formik.values);
 
-  // Modal
+  // Modal state
   const [showModal, setShowModal] = useState(false);
   const openModal = () => {
     setShowModal((prev) => !prev); /// toggle modal
@@ -123,6 +127,7 @@ const EmployeeCreateForm = () => {
             <label htmlFor="birthDate">Birth date</label>
             <DatePicker
               selected={formik.values.birthDate} //
+              // value={formik.values.birthDate.toISOString().slice(0, 10)}
               value={formik.values.birthDate}
               onChange={(newDate) => formik.setFieldValue("birthDate", newDate)}
               onBlur={formik.handleBlur}

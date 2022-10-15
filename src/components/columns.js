@@ -14,14 +14,14 @@ export const COLUMNS = [
     Header: "Date of Birth",
     accessor: "birthDate",
     Cell: ({ value }) => {
-      return format(new Date(value), "dd/MM/yyyy");
+      return format(new Date(value), "yyyy/MM/dd");
     },
   },
   {
     Header: "Start Date",
     accessor: "startDate",
     Cell: ({ value }) => {
-      return format(new Date(value), "dd/MM/yyyy");
+      return format(new Date(value), "yyyy/MM/dd");
     },
   },
   {

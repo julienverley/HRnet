@@ -22,9 +22,10 @@ export const yupValidationSchema = yup.object().shape({
     .max(40, "Too long")
     .required("City is required"),
   zipCode: yup
-    .number()
-    .typeError("Zip code must be a number")
-    .min(2, "Correct zip code is required")
-    .max(12, "Correct zip code is required")
+    .string()
+    .matches(/^[0-9]{5}$/, "Correct zip code is required")
     .required("Zip code is required"),
+  // .typeError("Zip code must be a number")
+  // .min(2, "Correct zip code is required")
+  // .max(12, "Correct zip code is required")
 });

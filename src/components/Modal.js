@@ -1,5 +1,8 @@
 import React from "react";
 
+// Ce fichier en NPM
+// Ajouter propTypes
+
 const Modal = ({
   showModal,
   setShowModal,
@@ -8,6 +11,7 @@ const Modal = ({
   contentcolor,
   borderModal,
   fontSizeModal,
+  style,
 }) => {
   return (
     <>
@@ -33,11 +37,11 @@ const Modal = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            ...style, ///
           }}
         >
           <div
             className="modal-wrapper"
-            showModal={showModal}
             style={{
               borderRadius: borderModal,
             }}

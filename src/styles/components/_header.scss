@@ -26,6 +26,10 @@
 
     .logo-container-img {
         height: 118px;
+
+        @media (max-width: 1000px) {
+            height: 80px;
+        }
         // height: 80px; //// 
     }
 }
