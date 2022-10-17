@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import PropTypes from "prop-types"; /// A indiquer pour Redux slice ?
 
 const initialState = {
   employees: [

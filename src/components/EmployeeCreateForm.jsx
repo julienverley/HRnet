@@ -7,13 +7,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Modal from "./Modal";
 import LastConnexionMessage from "./LastConnexionMessage";
-
-// useContext
-// import { employeesListContext } from "../context/ContextProvider";
-
-// Redux
 import { useDispatch } from "react-redux";
 import { addEmployee } from "../feature/employeesSlice";
+// useContext:
+// import { employeesListContext } from "../context/ContextProvider";
 
 const EmployeeCreateForm = () => {
   // useContext
@@ -251,6 +248,7 @@ const EmployeeCreateForm = () => {
           </div>
         </div>
         {/* Submit */}
+        {/* /// Pourquoi mon atome AtomSubmitButton.jsx ne fonctionne pas ? /// */}
         <div>
           <button
             className="button"
@@ -267,11 +265,11 @@ const EmployeeCreateForm = () => {
         //
         //Change your custom parameters below:
         //
-        backgroundColor="#544343"
-        borderModal="0px"
-        content="Employee added successfully"
-        contentcolor="white"
-        fontSizeModal="1.8rem"
+        // modalContentText="Employee added successfully"
+        modalBackgroundColor="#544343"
+        modalContentColor="white"
+        modalBorder="0px"
+        modalFontSize="1.8rem"
       />
       <LastConnexionMessage />
     </>

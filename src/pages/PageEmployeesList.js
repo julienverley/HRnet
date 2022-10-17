@@ -16,7 +16,7 @@ const EmployeesList = () => {
   // const context = React.useContext(employeesListContext);
   // console.log(context.employees); //
 
-  // Redux toolkit
+  // Redux
   const employees = useSelector((state) => state.employees.employees);
 
   return (

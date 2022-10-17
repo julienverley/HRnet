@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
 // Ce fichier en NPM
 // Ajouter propTypes
@@ -6,20 +8,37 @@ import React from "react";
 const Modal = ({
   showModal,
   setShowModal,
-  content,
-  backgroundColor,
-  contentcolor,
-  borderModal,
-  fontSizeModal,
+  modalContentText,
+  modalBackgroundColor,
+  modalContentColor,
+  modalBorder,
+  modalFontSize,
   style,
 }) => {
+  const employeesList = useSelector((state) => state.employees.employees);
+  console.log(employeesList);
+  const employeesListLastAdded = (employeesList) => {
+    const lastAdded = employeesList[employeesList.length - 1];
+    return lastAdded;
+  };
+  console.log(employeesListLastAdded(employeesList).firstName);
+  const lastAddedFirst = employeesListLastAdded(employeesList).firstName;
+  const lastAddedLast = employeesListLastAdded(employeesList).lastName;
+  console.log(lastAddedFirst);
+  console.log(lastAddedLast);
+
+  // return lastAdded;
+  // const lastAddedFirst = lastAdded.firstName;
+  // console.log(lastAddedFirst);
+  // employeesListLastAdded(employeesList);
+
   return (
     <>
       {showModal ? (
         <div
           className="background"
           style={{
-            backgroundColor: backgroundColor,
+            backgroundColor: modalBackgroundColor,
             opacity: "0.85",
             fontWeight: "bold",
             padding: "2rem",
@@ -32,7 +51,7 @@ const Modal = ({
             minWidth: "340px",
             width: "99vw",
             height: "98.5vh",
-            borderRadius: borderModal,
+            borderRadius: modalBorder,
             textAlign: "center",
             display: "flex",
             alignItems: "center",
@@ -43,12 +62,13 @@ const Modal = ({
           <div
             className="modal-wrapper"
             style={{
-              borderRadius: borderModal,
+              borderRadius: modalBorder,
             }}
           >
             <div className="modal-content">
-              <p style={{ color: contentcolor, fontSize: fontSizeModal }}>
-                {content}
+              <p style={{ color: modalContentColor, fontSize: modalFontSize }}>
+                {/* {modalContentText} */}
+                Employee {lastAddedFirst} {lastAddedLast} added
               </p>
             </div>
             <div
@@ -56,7 +76,7 @@ const Modal = ({
               aria-label="Close modal"
               onClick={() => setShowModal((prev) => !prev)} /// toggle modal
               style={{
-                color: contentcolor,
+                color: modalContentColor,
                 fontSize: "1.5rem",
                 fontWeight: "lighter",
                 outline: "1px solid white",
@@ -83,6 +103,17 @@ const Modal = ({
       ) : null}
     </>
   );
+};
+
+// PropTypes for Modal
+Modal.propTypes = {
+  showModal: PropTypes.bool.isRequired,
+  setShowModal: PropTypes.func.isRequired, //
+  // content: PropTypes.string.isRequired,
+  modalBackgroundColor: PropTypes.string,
+  modalContentColor: PropTypes.string,
+  modalBorder: PropTypes.string,
+  modalFontSize: PropTypes.string,
 };
 
 export default Modal;

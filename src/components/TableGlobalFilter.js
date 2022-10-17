@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const TableGlobalFilter = ({ filter, setFilter }) => {
   return (
@@ -11,6 +12,12 @@ const TableGlobalFilter = ({ filter, setFilter }) => {
       />
     </div>
   );
+};
+
+// PropTypes
+TableGlobalFilter.propTypes = {
+  filter: PropTypes.string,
+  setFilter: PropTypes.func,
 };
 
 export default TableGlobalFilter;

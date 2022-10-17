@@ -5,25 +5,17 @@ import {
   usePagination,
   useGlobalFilter,
 } from "react-table";
-// import { number } from "yup";
-// import MOCK_DATA from "../data/MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import TableGlobalFilter from "./TableGlobalFilter";
 import CustomSelect from "./CustomSelect";
+import PropTypes from "prop-types";
 
-//  data is context.employees cf. EmployeesList.js
 const Table = ({ data }) => {
   const columns = useMemo(() => COLUMNS, []);
-  // const data = useMemo(() => MOCK_DATA, []);
-
   const {
     getTableProps,
     getTableBodyProps,
-    // Group of headers, map of each header (column) (cf. Header in columns.js [])
     headerGroups,
-    // Rows from the table instance (for each row, map of each cell (cf. accessor in columns.js []))
-    // rows,
-    // page, nextPage and previousPage... are used for pagination (cf. usePagination)
     page,
     nextPage,
     previousPage,
@@ -31,10 +23,8 @@ const Table = ({ data }) => {
     canNextPage,
     canPreviousPage,
     pageOptions,
-    // pageSize is used for pagination (number of rows per page)
     setPageSize,
     state,
-    // Global Filter
     setGlobalFilter,
   } = useTable(
     {
@@ -46,7 +36,6 @@ const Table = ({ data }) => {
     usePagination
   );
 
-  // const { pageIndex, pageSize, globalFilter } = state;
   const { pageIndex, globalFilter } = state;
 
   const pagesOptions = [
@@ -64,11 +53,11 @@ const Table = ({ data }) => {
         {/* Table show a number of employees */}
         <div className="input-container table-show">
           Show number of employees
-          <CustomSelect /// Gérer la defaultValue, le placeholder
+          <CustomSelect
             value={pagesOptions}
             onChange={(value) => setPageSize(Number(value.value))}
             options={pagesOptions}
-            defaultValue={pagesOptions[1]} ///
+            defaultValue={pagesOptions[1]}
           ></CustomSelect>
         </div>
       </div>
@@ -128,6 +117,11 @@ const Table = ({ data }) => {
       </div>
     </>
   );
+};
+
+// PropTypes validation
+Table.propTypes = {
+  data: PropTypes.array.isRequired,
 };
 
 export default Table;

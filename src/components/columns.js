@@ -1,5 +1,6 @@
 // Function used to format the date field (npm install date-fns --save)
 import { format } from "date-fns";
+import PropTypes from "prop-types";
 
 export const COLUMNS = [
   {
@@ -14,6 +15,7 @@ export const COLUMNS = [
     Header: "Date of Birth",
     accessor: "birthDate",
     Cell: ({ value }) => {
+      // console.log(typeof value);
       return format(new Date(value), "yyyy/MM/dd");
     },
   },
@@ -45,3 +47,8 @@ export const COLUMNS = [
     accessor: "department",
   },
 ];
+
+// PropTypes for COLUMNS
+COLUMNS.propTypes = {
+  value: PropTypes.string,
+};

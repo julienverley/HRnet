@@ -1,5 +1,6 @@
 import React from "react";
 import Select from "react-select";
+import PropTypes from "prop-types";
 
 const CustomSelect = ({
   onChange,
@@ -9,11 +10,7 @@ const CustomSelect = ({
   // values,
   className,
 }) => {
-  // const defaultValue = (options, values) => {
-  //   return options ? options.find((option) => option.value === values) : "";
-  //   // return options ? options.find((option) => option.value === values) : 50;
-  // };
-
+  /// Truc bizarre ?
   const customStyles = {
     indicatorsContainer: (provided, state) => ({
       ...provided,
@@ -63,6 +60,15 @@ const CustomSelect = ({
       />
     </div>
   );
+};
+
+// PropTypes for CustomSelect
+CustomSelect.propTypes = {
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
+  options: PropTypes.array,
+  defaultValue: PropTypes.object,
+  className: PropTypes.string,
 };
 
 export default CustomSelect;

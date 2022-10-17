@@ -1,15 +1,12 @@
 import React from "react";
 import Logo from "./Logo";
-// import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Header = ({ h1 }) => {
-  // const navigate = useNavigate();
-
   return (
     <>
       <div className="header">
-        {/* <div onClick={() => navigate("/")}> */}
         <NavLink to="/">
           <Logo />
         </NavLink>
@@ -17,6 +14,11 @@ const Header = ({ h1 }) => {
       </div>
     </>
   );
+};
+
+// PropTypes for Header
+Header.propTypes = {
+  h1: PropTypes.string.isRequired,
 };
 
 export default Header;
