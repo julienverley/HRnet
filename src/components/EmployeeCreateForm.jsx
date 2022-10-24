@@ -5,6 +5,7 @@ import CustomSelect from "./CustomSelect";
 import { states } from "../data/statesList";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+// import Modal from "./Modal";
 import { Modal } from "react_modal_julfrontdev"; // NPM Modal package
 import LastConnexionMessage from "./LastConnexionMessage";
 import { useDispatch, useSelector } from "react-redux";
