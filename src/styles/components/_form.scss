@@ -33,7 +33,7 @@
 }
 
     select, input, .input {
-        outline: none; // 
+        outline: none; 
         border: 1px solid;
         border-color: $color-1;
         border-radius: 10px;
@@ -81,7 +81,6 @@
     }
 
     &:disabled {
-        // color: pink;
         cursor: not-allowed;
         opacity: .2;
     }

@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# HRNet:
 
-## Available Scripts
+This project from OpenClassrooms upadates the HRNet project from from JQuery legacy. The goal is to create a web application to manage employees. The application is built with React and Redux.
 
-In the project directory, you can run:
+## Author
 
-### `npm start`
+Julien Verley
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies and dependencies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Javascript
+- Node.js (v16.13.0)
+- React (v 18.2.0)
+- React-dom (v 18.2.0)
+- React-router-dom (v 6.4.0)
+- Prop-types (v 15.8.1)
+- CSS Sass (v 1.54.9)
+- Formik (v 2.2.9)
+- React-datepicker (v 4.8.0)
+- React-redux (v 8.0.4)
+- React-select (v 5.4.0)
+- React-table (v 7.8.0)
+- Redux-toolkit (v 1.8.6)
+- React-yup (v 1.24.1)
+- Typescript (v 4.8.4)
+- Yup (v 0.32.11)
 
-### `npm test`
+## How to install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### On your computer
 
-### `npm run build`
+- Create main directory:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```console
+$ mkdir <yourDirectory>
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Project page will run on port http://localhost:3000
+- Keep terminal open
+- Open new terminal
+- Clone my project:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```console
+$ git clone https://github.com/julfrontdev/julien_verley_14_092022
 
-### `npm run eject`
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Install dependencies:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```console
+$ npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Start project:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```console
+$ npm start
+```
 
-## Learn More
+## URLs
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Front-end : http://localhost:3000
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Thanks
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you to [Antoine Bourin](https://github.com/AntoineBourin) and [Marco Guzman](https://github.com/Marcoguzman211) who have made this possible!

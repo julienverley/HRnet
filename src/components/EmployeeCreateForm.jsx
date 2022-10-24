@@ -5,19 +5,12 @@ import CustomSelect from "./CustomSelect";
 import { states } from "../data/statesList";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Modal from "./Modal";
+import { Modal } from "react_modal_julfrontdev"; // NPM Modal package
 import LastConnexionMessage from "./LastConnexionMessage";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addEmployee } from "../feature/employeesSlice";
-// useContext:
-// import { employeesListContext } from "../context/ContextProvider";
 
 const EmployeeCreateForm = () => {
-  // useContext
-  // const context = React.useContext(employeesListContext);
-  // console.log(context);
-
-  // Redux
   const dispatch = useDispatch();
 
   // react-select departments list:
@@ -33,7 +26,6 @@ const EmployeeCreateForm = () => {
     value: state.abbreviation,
     label: state.name,
   }));
-  // console.log(stateOptions);
 
   const formik = useFormik({
     initialValues: {
@@ -49,28 +41,32 @@ const EmployeeCreateForm = () => {
     },
     validationSchema: yupValidationSchema,
     onSubmit: (values, { resetForm, setSubmitting }) => {
-      console.log(values);
-      // Add new employee to the list:
-      // useContext
-      // context.addEmployee(values);
-
-      // Redux
+      setSubmitting(true);
       // Transform dates from objects to strings
       const birthDate = values.birthDate.toISOString();
       const startDate = values.startDate.toISOString();
       values = { ...values, birthDate, startDate };
-
+      // Redux dispatch action to add new employee to the list of employees
       dispatch(addEmployee(values));
       openModal();
       resetForm({ values: "" });
     },
   });
 
-  // Modal state
+  // Modal props: showModal, setShowModal, to toggle the modal
   const [showModal, setShowModal] = useState(false);
   const openModal = () => {
-    setShowModal((prev) => !prev); /// toggle modal
+    setShowModal((prev) => !prev);
   };
+
+  // Modal props to get last employee (firstname and lastname) added from Redux
+  const employeesList = useSelector((state) => state.employees.employees);
+  const employeesListLastAdded = (employeesList) => {
+    const lastAdded = employeesList[employeesList.length - 1];
+    return lastAdded;
+  };
+  const lastAddedFirstName = employeesListLastAdded(employeesList).firstName;
+  const lastAddedLastName = employeesListLastAdded(employeesList).lastName;
 
   return (
     <>
@@ -119,12 +115,11 @@ const EmployeeCreateForm = () => {
           {formik.errors.lastName && formik.touched.lastName && (
             <p className="error-message">{formik.errors.lastName}</p>
           )}
-          {/* Date birth */}
+          {/* Birth date */}
           <div className="birthdate input-container">
             <label htmlFor="birthDate">Birth date</label>
             <DatePicker
-              selected={formik.values.birthDate} //
-              // value={formik.values.birthDate.toISOString().slice(0, 10)}
+              selected={formik.values.birthDate}
               value={formik.values.birthDate}
               onChange={(newDate) => formik.setFieldValue("birthDate", newDate)}
               onBlur={formik.handleBlur}
@@ -133,7 +128,7 @@ const EmployeeCreateForm = () => {
               name="birthDate"
             />
           </div>
-          {/* Date start */}
+          {/* Start date */}
           <div className="startdate input-container">
             <label htmlFor="startDate">Start Date</label>
             <DatePicker
@@ -147,7 +142,6 @@ const EmployeeCreateForm = () => {
             />
           </div>
         </div>
-        {/*  */}
         {/* Address */}
         <h3>Address</h3>
         <div className="container-address">
@@ -227,7 +221,6 @@ const EmployeeCreateForm = () => {
             <p className="error-message">{formik.errors.zipCode}</p>
           )}
         </div>
-        {/*  */}
         {/* Department */}
         <div>
           <div className="department input-container">
@@ -247,8 +240,6 @@ const EmployeeCreateForm = () => {
             />
           </div>
         </div>
-        {/* Submit */}
-        {/* /// Pourquoi mon atome AtomSubmitButton.jsx ne fonctionne pas ? /// */}
         <div>
           <button
             className="button"
@@ -262,14 +253,14 @@ const EmployeeCreateForm = () => {
       <Modal
         showModal={showModal}
         setShowModal={setShowModal}
-        //
-        //Change your custom parameters below:
-        //
-        // modalContentText="Employee added successfully"
         modalBackgroundColor="#544343"
         modalContentColor="white"
         modalBorder="0px"
         modalFontSize="1.8rem"
+        modalStaticTextContentFirstPart="Employee"
+        modalDynamicTextContentFirstPart={lastAddedFirstName}
+        modalDynamicTextContentLastPart={lastAddedLastName}
+        modalStaticTextContentLastPart="added successfully"
       />
       <LastConnexionMessage />
     </>

@@ -7,10 +7,8 @@ const CustomSelect = ({
   onBlur,
   options,
   defaultValue,
-  // values,
   className,
 }) => {
-  /// Truc bizarre ?
   const customStyles = {
     indicatorsContainer: (provided, state) => ({
       ...provided,
@@ -20,7 +18,6 @@ const CustomSelect = ({
       ...provided,
       width: "15rem",
       height: "2rem",
-      // margin: "0 0 1rem 0",
       borderRadius: 10,
       border: "1px solid #93AD18",
     }),
@@ -52,7 +49,6 @@ const CustomSelect = ({
     <div className={className}>
       <Select
         defaultValue={defaultValue}
-        // value={defaultValue(options, values)}
         onChange={(value) => onChange(value)}
         options={options}
         onBlur={onBlur}

@@ -15,7 +15,6 @@ export const COLUMNS = [
     Header: "Date of Birth",
     accessor: "birthDate",
     Cell: ({ value }) => {
-      // console.log(typeof value);
       return format(new Date(value), "yyyy/MM/dd");
     },
   },
