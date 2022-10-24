@@ -31,14 +31,6 @@ Julien Verley
 
 ### On your computer
 
-- Create main directory:
-
-```console
-$ mkdir <yourDirectory>
-```
-
-- Project page will run on port http://localhost:3000
-- Keep terminal open
 - Open new terminal
 - Clone my project:
 
