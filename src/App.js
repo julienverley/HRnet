@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { pageEmployeeForm, pageEmployeesList } from "./routes";
 import PageEmployeeForm from "./pages/PageEmployeeForm";
 import PageEmployeesList from "./pages/PageEmployeesList";
@@ -11,13 +12,13 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        <BrowserRouter>
+        <Router baseline="/">
           <Routes>
             <Route path={pageEmployeeForm} element={<PageEmployeeForm />} />
             <Route path={pageEmployeesList} element={<PageEmployeesList />} />
             <Route path="*" element={<PageError />} />
           </Routes>
-        </BrowserRouter>
+        </Router>
       </Provider>
     </>
   );
