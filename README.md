@@ -11,7 +11,7 @@ Julien Verley
 ## Technologies and dependencies
 
 - Javascript
-- Node.js (v16.13.0)
+- Node.js (v 16.13.0)
 - React (v 18.2.0)
 - React-dom (v 18.2.0)
 - React-router-dom (v 6.4.0)
@@ -27,9 +27,23 @@ Julien Verley
 - Typescript (v 4.8.4)
 - Yup (v 0.32.11)
 
-## How to install
+## Package published on NPM
 
-### On your computer
+- React_modal_julfrontdev (v 0.1.5)
+
+https://www.npmjs.com/package/react_modal_julfrontdev
+
+```
+npm i react_modal_julfrontdev
+```
+
+## Access to the app
+
+### Visit on GitHub pages
+
+https://julfrontdev.github.io/julien_verley_14_092022/
+
+### Install on your computer
 
 - Open new terminal
 - Clone my project:
@@ -57,4 +71,4 @@ Front-end : http://localhost:3000
 
 ## Thanks
 
-Thank you to [Antoine Bourin](https://github.com/AntoineBourin) and [Marco Guzman](https://github.com/Marcoguzman211) who have made this possible!
+Thank you to [Antoine Bourin](https://github.com/AntoineBourin) who have made this possible!
