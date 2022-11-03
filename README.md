@@ -1,8 +1,8 @@
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-# HRNet:
+# Application "HRnet"
 
-This project from OpenClassrooms upadates the HRNet project from from JQuery legacy. The goal is to create a web application to manage employees. The application is built with React and Redux.
+This project from OpenClassrooms updates the HRNet project from JQuery legacy. The goal is to create a web application to manage employees. The application is built with React and Redux.
 
 ## Author
 
@@ -65,7 +65,7 @@ $ npm install
 $ npm start
 ```
 
-## URLs
+## URL
 
 Front-end : http://localhost:3000
 

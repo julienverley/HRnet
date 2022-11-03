@@ -2,6 +2,7 @@ import React from "react";
 import Select from "react-select";
 import PropTypes from "prop-types";
 
+// CustomSelect sets select container, input, option etc. for "States" and "Department" in PageEmployeeForm, and "Show number of employees" in PageEmployeesList
 const CustomSelect = ({
   onChange,
   onBlur,

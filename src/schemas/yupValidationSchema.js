@@ -1,5 +1,6 @@
-import * as yup from "yup"; // cf. validation schema
+import * as yup from "yup";
 
+// Organizes error settings, from conditions to user messages
 export const yupValidationSchema = yup.object().shape({
   firstName: yup
     .string()

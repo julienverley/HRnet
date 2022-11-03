@@ -10,6 +10,7 @@ import TableGlobalFilter from "./TableGlobalFilter";
 import CustomSelect from "./CustomSelect";
 import PropTypes from "prop-types";
 
+// Table organizes general table settings like number of lines viewed, sorting etc.
 const Table = ({ data }) => {
   const columns = useMemo(() => COLUMNS, []);
   const {

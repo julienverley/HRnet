@@ -5,12 +5,12 @@ import CustomSelect from "./CustomSelect";
 import { states } from "../data/statesList";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import Modal from "./Modal";
 import { Modal } from "react_modal_julfrontdev"; // NPM Modal package
 import LastConnexionMessage from "./LastConnexionMessage";
 import { useDispatch, useSelector } from "react-redux";
 import { addEmployee } from "../feature/employeesSlice";
 
+// EmployeeCreateForm gets values from the form, using Formik
 const EmployeeCreateForm = () => {
   const dispatch = useDispatch();
 
@@ -255,6 +255,7 @@ const EmployeeCreateForm = () => {
         showModal={showModal}
         setShowModal={setShowModal}
         modalBackgroundColor="#544343"
+        // modalCloseButton="Close modal" /// props ne fonctionne pas
         modalContentColor="white"
         modalBorder="0px"
         modalFontSize="1.8rem"

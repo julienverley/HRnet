@@ -6,6 +6,7 @@ import AtomNavButton from "../components/atoms/AtomNavButton";
 import LastConnexionMessage from "../components/LastConnexionMessage";
 import { useSelector } from "react-redux";
 
+// Page where to see employees
 const EmployeesList = () => {
   const employees = useSelector((state) => state.employees.employees);
 

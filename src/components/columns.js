@@ -2,6 +2,7 @@
 import { format } from "date-fns";
 import PropTypes from "prop-types";
 
+// COLUMNS is used  to set table head columns names and columns entry values
 export const COLUMNS = [
   {
     Header: "First Name",

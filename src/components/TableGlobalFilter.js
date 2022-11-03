@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+// TableGlobalFilter organizes word filter settings
 const TableGlobalFilter = ({ filter, setFilter }) => {
   return (
     <div className="table-filter input-container">
