@@ -11,18 +11,18 @@ const CustomSelect = ({
   className,
 }) => {
   const customStyles = {
-    indicatorsContainer: (provided, state) => ({
+    indicatorsContainer: (provided) => ({
       ...provided,
       display: "none",
     }),
-    container: (provided, state) => ({
+    container: (provided) => ({
       ...provided,
       width: "15rem",
       height: "2rem",
       borderRadius: 10,
       border: "1px solid #93AD18",
     }),
-    input: (provided, state) => ({
+    input: (provided) => ({
       ...provided,
       padding: "0 0 0 1rem",
       cursor: "pointer",

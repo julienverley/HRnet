@@ -14,7 +14,7 @@ import { addEmployee } from "../feature/employeesSlice";
 const EmployeeCreateForm = () => {
   const dispatch = useDispatch();
 
-  // react-select departments list:
+  // React-select departments list:
   const departmentOptions = [
     { value: "sales", label: "Sales" },
     { value: "marketing", label: "Marketing" },
@@ -22,7 +22,7 @@ const EmployeeCreateForm = () => {
     { value: "human_resources", label: "Human Resources" },
     { value: "legal", label: "Legal" },
   ];
-  // react-select states list:
+  // React-select states list:
   const stateOptions = states.map((state) => ({
     value: state.abbreviation,
     label: state.name,
