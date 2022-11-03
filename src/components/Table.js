@@ -49,9 +49,9 @@ const Table = ({ data }) => {
   return (
     <>
       <div className="table-header">
-        {/* Table search */}
+        {/* Table user is able to search using filter */}
         <TableGlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-        {/* Table show a number of employees */}
+        {/* Table user is able to show a number of employees */}
         <div className="input-container table-show">
           Show number of employees
           <CustomSelect
