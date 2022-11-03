@@ -1,6 +1,6 @@
 .error404 {
-    height: 100vh;
-    position: relative;
+    // height: 100vh;
+    // position: relative;
 
     .error-page {
         margin: 10% 0;
@@ -8,12 +8,16 @@
         flex-direction: column;
 
         .error-page-message {
-            font-size: 6rem;
+            font-size: 8rem;
+            opacity: .3;
             font-weight: bold;
             text-align: center;
             margin: 5% 0;
-            color:$color-1;
-            opacity: .7;
+            color:$color-2;
+
+            @media (max-width: 500px) {
+                font-size: 5rem;
+            }
         }
 
         .error-page-link-message{
@@ -22,6 +26,10 @@
             .error-link-message {
                 color: black;
                 margin-top: 163px;
+                
+                @media (max-width: 400px) {
+                    font-size: .8rem;
+                  }
             }
         }
     }

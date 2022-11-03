@@ -5,16 +5,12 @@ import Header from "../components/Header";
 const Error = () => {
   return (
     <div className="error404">
-      <div className="header">
-        <Header />
-      </div>
+      <Header h1="404 error" />
       <div className="error-page">
-        <h2 className="error-page-message">Page inexistante...</h2>
+        <h2 className="error-page-message">Page not found...</h2>
         <div className="error-page-link-message">
           <NavLink to="/">
-            <h4 className="error-link-message">
-              Retourner sur la page du formulaire
-            </h4>
+            <h4 className="error-link-message">Go back to Form</h4>
           </NavLink>
         </div>
       </div>
