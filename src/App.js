@@ -4,7 +4,6 @@ import { pageEmployeeForm, pageEmployeesList } from "./routes";
 import PageEmployeeForm from "./pages/PageEmployeeForm";
 import PageEmployeesList from "./pages/PageEmployeesList";
 import PageError from "./pages/PageError";
-// Redux toolkit:
 import { Provider } from "react-redux";
 import store from "./app/store";
 

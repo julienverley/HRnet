@@ -255,7 +255,7 @@ const EmployeeCreateForm = () => {
         showModal={showModal}
         setShowModal={setShowModal}
         modalBackgroundColor="#544343"
-        // modalCloseButton="Close modal" /// props ne fonctionne pas
+        modalCloseButton="Close"
         modalContentColor="white"
         modalBorder="0px"
         modalFontSize="1.8rem"
