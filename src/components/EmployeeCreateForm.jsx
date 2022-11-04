@@ -60,14 +60,14 @@ const EmployeeCreateForm = () => {
     setShowModal((prev) => !prev);
   };
 
-  // Modal props to get last employee (firstname and lastname) added from Redux
-  const employeesList = useSelector((state) => state.employees.employees);
-  const employeesListLastAdded = (employeesList) => {
-    const lastAdded = employeesList[employeesList.length - 1];
-    return lastAdded;
-  };
-  const lastAddedFirstName = employeesListLastAdded(employeesList).firstName;
-  const lastAddedLastName = employeesListLastAdded(employeesList).lastName;
+  // // Modal props to get last employee (firstname and lastname) added from Redux
+  // const employeesList = useSelector((state) => state.employees.employees);
+  // const employeesListLastAdded = (employeesList) => {
+  //   const lastAdded = employeesList[employeesList.length - 1];
+  //   return lastAdded;
+  // };
+  // const lastAddedFirstName = employeesListLastAdded(employeesList).firstName;
+  // const lastAddedLastName = employeesListLastAdded(employeesList).lastName;
 
   return (
     <>
@@ -127,8 +127,16 @@ const EmployeeCreateForm = () => {
               dateFormat="yyyy/MM/dd"
               id="birthDate"
               name="birthDate"
+              className={
+                formik.errors.birthDate && formik.touched.birthDate
+                  ? "input-error"
+                  : "input"
+              }
             />
           </div>
+          {formik.errors.birthDate && formik.touched.birthDate && (
+            <p className="error-message">{formik.errors.birthDate}</p>
+          )}
           {/* Start date */}
           <div className="startdate input-container">
             <label htmlFor="startDate">Start Date</label>
@@ -140,8 +148,16 @@ const EmployeeCreateForm = () => {
               dateFormat="yyyy/MM/dd"
               id="startDate"
               name="startDate"
+              className={
+                formik.errors.startDate && formik.touched.startDate
+                  ? "input-error"
+                  : "input"
+              }
             />
           </div>
+          {formik.errors.startDate && formik.touched.startDate && (
+            <p className="error-message">{formik.errors.startDate}</p>
+          )}
         </div>
         {/* Address */}
         <h3>Address</h3>
@@ -222,7 +238,7 @@ const EmployeeCreateForm = () => {
             <p className="error-message">{formik.errors.zipCode}</p>
           )}
         </div>
-        {/* Department */}
+        {/* Department select */}
         <div>
           <div className="department input-container">
             <label htmlFor="department">Department</label>
@@ -255,13 +271,13 @@ const EmployeeCreateForm = () => {
         showModal={showModal}
         setShowModal={setShowModal}
         modalBackgroundColor="#544343"
-        modalCloseButton="Close"
+        modalCloseButton="Close modal"
         modalContentColor="white"
         modalBorder="0px"
         modalFontSize="1.8rem"
         modalStaticTextContentFirstPart="Employee"
-        modalDynamicTextContentFirstPart={lastAddedFirstName}
-        modalDynamicTextContentLastPart={lastAddedLastName}
+        // modalDynamicTextContentFirstPart={lastAddedFirstName}
+        // modalDynamicTextContentLastPart={lastAddedLastName}
         modalStaticTextContentLastPart="added successfully"
       />
       <LastConnexionMessage />

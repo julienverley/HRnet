@@ -12,6 +12,8 @@ export const yupValidationSchema = yup.object().shape({
     .min(2, "Too short last name")
     .max(20, "Too long")
     .required("Last name is required"),
+  birthDate: yup.date().max(new Date(), "Date must be in the past"),
+  // startDate: yup.date().max(new Date(), "Date must be in the past"),
   street: yup
     .string()
     .min(2, "Too short street name")
