@@ -24,26 +24,35 @@ const CustomSelect = ({
     }),
     input: (provided) => ({
       ...provided,
-      padding: "0 0 0 1rem",
+      // padding: "0 0 0 1rem",
       cursor: "pointer",
+      height: "2rem",
+      margin: 0,
+      paddingBottom: 0,
+      paddingTop: 0,
     }),
     option: (provided, state) => ({
       ...provided,
       color: state.isSelected ? "white" : "black",
       backgroundColor: state.isSelected ? "#6E850F" : "white",
       opacity: state.isSelected ? 0.6 : 1,
-      padding: 20,
+      // padding: 20,
       cursor: "pointer",
     }),
     control: () => ({
+      height: "2rem",
       // none of react-select's styles are passed to <Control />
-      width: 200,
+      // width: 200,
     }),
     singleValue: (provided, state) => {
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = "opacity 300ms";
       return { ...provided, opacity, transition };
     },
+    valueContainer: (provided) => ({
+      ...provided,
+      padding: "0px 8px",
+    }),
   };
 
   return (
