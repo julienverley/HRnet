@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Modal } from "react_modal_julfrontdev"; // NPM Modal package
 import LastConnexionMessage from "./LastConnexionMessage";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addEmployee } from "../feature/employeesSlice";
 
 // EmployeeCreateForm gets values from the form, using Formik
@@ -59,15 +59,6 @@ const EmployeeCreateForm = () => {
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
-
-  // // Modal props to get last employee (firstname and lastname) added from Redux
-  // const employeesList = useSelector((state) => state.employees.employees);
-  // const employeesListLastAdded = (employeesList) => {
-  //   const lastAdded = employeesList[employeesList.length - 1];
-  //   return lastAdded;
-  // };
-  // const lastAddedFirstName = employeesListLastAdded(employeesList).firstName;
-  // const lastAddedLastName = employeesListLastAdded(employeesList).lastName;
 
   return (
     <>
@@ -276,8 +267,6 @@ const EmployeeCreateForm = () => {
         modalBorder="0px"
         modalFontSize="1.8rem"
         modalStaticTextContentFirstPart="Employee"
-        // modalDynamicTextContentFirstPart={lastAddedFirstName}
-        // modalDynamicTextContentLastPart={lastAddedLastName}
         modalStaticTextContentLastPart="added successfully"
       />
       <LastConnexionMessage />
