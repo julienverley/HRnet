@@ -69,6 +69,7 @@ const EmployeeCreateForm = () => {
       >
         {/* First inputs */}
         <div className="container-first-inputs">
+          {/* First name */}
           <div className="firstname input-container">
             <label htmlFor="firstName">First Name</label>
             <input
@@ -88,6 +89,7 @@ const EmployeeCreateForm = () => {
           {formik.errors.firstName && formik.touched.firstName && (
             <p className="error-message">{formik.errors.firstName}</p>
           )}
+          {/* Last name */}
           <div className="lastname input-container">
             <label htmlFor="lastName">Last Name</label>
             <input
@@ -115,7 +117,7 @@ const EmployeeCreateForm = () => {
               value={formik.values.birthDate}
               onChange={(newDate) => formik.setFieldValue("birthDate", newDate)}
               onBlur={formik.handleBlur}
-              dateFormat="yyyy/MM/dd"
+              dateFormat="MM/dd/yyyy"
               id="birthDate"
               name="birthDate"
               className={
@@ -136,7 +138,7 @@ const EmployeeCreateForm = () => {
               value={formik.values.startDate}
               onChange={(newDate) => formik.setFieldValue("startDate", newDate)}
               onBlur={formik.handleBlur}
-              dateFormat="yyyy/MM/dd"
+              dateFormat="MM/dd/yyyy"
               id="startDate"
               name="startDate"
               className={
