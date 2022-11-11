@@ -111,7 +111,7 @@ const EmployeeCreateForm = () => {
           )}
           {/* Birth date */}
           <div className="birthdate input-container">
-            <label htmlFor="birthDate">Birth date</label>
+            <label htmlFor="birthDate">Birth Date</label>
             <DatePicker
               selected={formik.values.birthDate}
               value={formik.values.birthDate}
