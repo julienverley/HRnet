@@ -12,6 +12,7 @@ import { addEmployee } from "../feature/employeesSlice";
 
 // EmployeeCreateForm gets values from the form, using Formik
 const EmployeeCreateForm = () => {
+  const [employeeName, setEmployeeName] = useState("");
   const dispatch = useDispatch();
 
   // React-select departments list:
@@ -43,6 +44,7 @@ const EmployeeCreateForm = () => {
     validationSchema: yupValidationSchema,
     onSubmit: (values, { resetForm, setSubmitting }) => {
       setSubmitting(true);
+      setEmployeeName(`${values.firstName} ${values.lastName}`);
       // Transform dates from objects to strings
       const birthDate = values.birthDate.toISOString();
       const startDate = values.startDate.toISOString();
@@ -270,6 +272,7 @@ const EmployeeCreateForm = () => {
         modalFontSize="1.8rem"
         modalStaticTextContentFirstPart="Employee"
         modalStaticTextContentLastPart="added successfully"
+        modalDynamicTextContentFirstPart={employeeName}
       />
       <LastConnexionMessage />
     </>
