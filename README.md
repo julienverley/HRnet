@@ -41,7 +41,7 @@ npm i react_modal_julfrontdev
 
 ### Visit on GitHub pages
 
-https://julfrontdev.github.io/julien_verley_14_092022/
+https://julienverley.github.io/HRnet/
 
 ### Install on your computer
 
@@ -49,7 +49,7 @@ https://julfrontdev.github.io/julien_verley_14_092022/
 - Clone my project:
 
 ```console
-$ git clone https://github.com/julfrontdev/julien_verley_14_092022
+$ git clone https://github.com/julienverley/HRnet
 
 ```
 
